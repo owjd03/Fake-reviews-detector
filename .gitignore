@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# Data (never commit)
+data/raw/
+data/processed/
+
+# Models & checkpoints
+models/
+
+# Logs
+logs/
+
+# OS / editor
+.DS_Store
+.vscode/
