@@ -1,20 +1,22 @@
 import pandas as pd
+
 from sklearn.model_selection import train_test_split
 
 from .config import (
-    RAW_EXCEL, PROCESSED_DIR, CLEANED_CSV, TRAIN_CSV, TEST_CSV,
+    RAW_CSV, PROCESSED_DIR, CLEANED_CSV, TRAIN_CSV, TEST_CSV,
     SEED, TEST_SIZE, USE_METADATA
 )
+
 from .utils import clean_text
 
 def preprocess():
     PROCESSED_DIR.mkdir(parents=True, exist_ok=True)
 
     # Load Excel
-    df = pd.read_excel(RAW_EXCEL)
+    df = pd.read_csv(RAW_CSV)
     df.columns = [c.lower().strip() for c in df.columns]
-
-     df = df.rename(columns={
+    
+    df = df.rename(columns={
         "category": "domain",   # category → domain (internal name)
         "text_": "text"         # text_ → text
     })
